@@ -3,17 +3,7 @@ import { AppRouterCacheProvider } from '@mui/material-nextjs/v16-appRouter';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { cormorant_garamond, dm_sans } from './fonts';
 
 export const metadata: Metadata = {
   title: 'Séréna Studio — Institut Beauté & Bien-Être Paris',
@@ -28,7 +18,7 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
-      className={`${geistSans.variable} ${geistMono.variable}`}
+      className={`${cormorant_garamond.className} ${dm_sans.className}`}
       suppressHydrationWarning
     >
       <body suppressHydrationWarning>
