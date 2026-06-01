@@ -1,7 +1,9 @@
+import { Staff } from './staff.type';
+
 export interface CalendarEvent {
   id: string;
   type: 'blocked' | 'absence';
-  staff: string;
+  staff: string | Staff;
   date: string;
   startTime: string;
   endTime: string;

@@ -1,9 +1,13 @@
+import { Service } from './service.type';
+import { Staff } from './staff.type';
+import { User } from './user.type';
+
 export interface Appointment {
   id: string;
   reference: string;
-  service: string;
-  staff: 'any' | string;
-  user: string;
+  service: string | Service;
+  staff: 'any' | string | Staff;
+  user: string | User;
   date: string;
   startTime: string;
   endTime: string;

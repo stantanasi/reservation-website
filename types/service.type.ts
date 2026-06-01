@@ -1,3 +1,5 @@
+import { Staff } from './staff.type';
+
 export interface Service {
   id: string;
   slug: string;
@@ -10,7 +12,7 @@ export interface Service {
   image: string;
   featured: boolean;
   active: boolean;
-  staff: string[];
+  staff: string[] | Staff[];
   createdAt: string;
   updatedAt: string;
 }
