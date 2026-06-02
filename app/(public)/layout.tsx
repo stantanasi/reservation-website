@@ -1,3 +1,4 @@
+import Footer from '@/app/(public)/_components/Footer';
 import Navbar from '@/app/(public)/_components/Navbar';
 import { Metadata } from 'next';
 
@@ -18,6 +19,7 @@ export default function PublicLayout({
     <>
       <Navbar />
       {children}
+      <Footer />
     </>
   );
 }

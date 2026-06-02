@@ -103,6 +103,7 @@ type Props = PropsWithChildren<{
     image?: string;
     text?: string;
   };
+  component?: React.ElementType;
   maxWidth?: Breakpoint | false | undefined;
   mode?: 'light' | 'dark';
   sx?: SxProps<Theme>;
@@ -114,6 +115,7 @@ export default function Section({
   subtitle,
   align = 'center',
   background,
+  component = 'section',
   maxWidth = 'lg',
   mode = 'light',
   sx,
@@ -121,7 +123,7 @@ export default function Section({
 }: Props) {
   return (
     <Box
-      component="section"
+      component={component}
       sx={{
         position: 'relative',
         background: typeof background === 'string' ? background
