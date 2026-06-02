@@ -1,8 +1,12 @@
 import ServiceCard from '@/app/(public)/_components/ServiceCard';
 import { SERVICES } from '@/data/services.data';
 import { COLORS } from '@/themes/colors';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import { alpha, Button, Divider, Grid, Stack, Typography } from '@mui/material';
+import SpaIcon from '@mui/icons-material/Spa';
+import StarIcon from '@mui/icons-material/Star';
+import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
+import { alpha, Box, Button, Divider, Grid, Stack, Typography } from '@mui/material';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Section from './_components/Section';
@@ -142,6 +146,116 @@ export default function HomePage() {
             Voir toutes les prestations
           </Button>
         </Link>
+      </Section>
+
+      <Section align="left" background="#ffffff" maxWidth="xl">
+        <Grid container spacing={{ xs: 4, md: 8 }} sx={{ alignItems: 'center' }}>
+          <Grid size={{ xs: 12, md: 5 }} sx={{ position: 'relative' }}>
+            <Box
+              component="img"
+              src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=80"
+              alt="Soin Séréna Studio"
+              sx={{
+                width: '100%',
+                height: { xs: 300, md: 500 },
+                objectFit: 'cover',
+                display: 'block'
+              }}
+            />
+
+            <Stack
+              direction="column"
+              sx={{
+                position: 'absolute',
+                bottom: -20,
+                right: -20,
+                display: { xs: 'none', md: 'flex' },
+                alignItems: 'center',
+                aspectRatio: 1 / 1,
+                background: COLORS.secondary.main,
+                justifyContent: 'center',
+                padding: 3,
+              }}
+            >
+              <Typography variant="h3">
+                15
+              </Typography>
+              <Typography
+                sx={{
+                  color: COLORS.primary.light,
+                  fontSize: '0.55rem',
+                  letterSpacing: '0.12em',
+                  textAlign: 'center',
+                  textTransform: 'uppercase',
+                }}
+              >
+                Ans<br />
+                d'Excellence
+              </Typography>
+            </Stack>
+          </Grid>
+
+          <Grid size={{ xs: 12, md: 7 }}>
+            <Section.Header
+              overline="Notre Philosophie"
+              title="L'excellence au service de votre beauté"
+              subtitle="Chez Séréna, nous croyons que prendre soin de soi est un acte fondamental — non pas de vanité, mais de respect envers soi-même."
+              align="left"
+            />
+
+            <Grid container spacing={3}>
+              {[
+                {
+                  icon: <WorkspacePremiumIcon />,
+                  title: 'Produits d\'Exception',
+                  text: 'Nous sélectionnons uniquement des cosmétiques bio et haut de gamme — Biologique Recherche, Kérastase, Oribe.',
+                },
+                {
+                  icon: <SpaIcon />,
+                  title: 'Protocoles Sur-Mesure',
+                  text: 'Chaque soin est adapté à votre peau, vos besoins du moment et vos aspirations. Aucune routine standardisée.',
+                },
+                {
+                  icon: <AccessTimeIcon />,
+                  title: 'Un Temps Suspendu',
+                  text: 'Le studio est conçu pour que vous oubliiez le temps. Ambiance feutrée, arômes délicats, service discret et attentionné.',
+                },
+                {
+                  icon: <StarIcon />,
+                  title: 'Équipe Experte',
+                  text: 'Nos praticiens cumulent en moyenne 10 ans d\'expérience et se forment continuellement aux dernières techniques.',
+                },
+              ].map((item) => (
+                <Grid key={item.title} size={{ xs: 12, sm: 6 }}>
+                  <Stack direction="row" spacing={2}>
+                    <Box sx={{ color: COLORS.secondary.main, fontSize: 28 }}>{item.icon}</Box>
+
+                    <Stack direction="column" spacing={1}>
+                      <Typography variant="h6">
+                        {item.title}
+                      </Typography>
+                      <Typography variant="body2" sx={{ color: COLORS.text.secondary, lineHeight: 1.7 }}>
+                        {item.text}
+                      </Typography>
+                    </Stack>
+                  </Stack>
+                </Grid>
+              ))}
+            </Grid>
+
+            <Link href="/about">
+              <Button
+                variant="contained"
+                endIcon={<ArrowForwardIcon />}
+                sx={{
+                  marginTop: 5,
+                }}
+              >
+                Notre Histoire
+              </Button>
+            </Link>
+          </Grid>
+        </Grid>
       </Section>
     </main>
   );
