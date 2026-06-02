@@ -1,8 +1,8 @@
 'use client';
 
 import { cormorant_garamond, dm_sans } from '@/app/fonts';
+import { COLORS } from '@/themes/colors';
 import { alpha, createTheme } from '@mui/material/styles';
-import { COLORS } from './colors';
 
 const theme = createTheme({
   palette: {
@@ -140,10 +140,10 @@ const theme = createTheme({
           fontSize: '0.75rem',
         },
         contained: {
-          backgroundColor: COLORS.secondary.main,
+          background: COLORS.secondary.main,
           color: COLORS.primary.main,
           '&:hover': {
-            backgroundColor: COLORS.secondary.dark,
+            background: COLORS.secondary.dark,
             transform: 'translateY(-1px)',
           },
         },
@@ -159,7 +159,7 @@ const theme = createTheme({
           color: COLORS.text.secondary,
           padding: '8px 16px',
           '&:hover': {
-            backgroundColor: alpha(COLORS.primary.main, 0.04),
+            background: alpha(COLORS.primary.main, 0.04),
           },
         },
 
@@ -181,7 +181,7 @@ const theme = createTheme({
     MuiTabs: {
       styleOverrides: {
         indicator: {
-          backgroundColor: COLORS.secondary.main,
+          background: COLORS.secondary.main,
         },
       },
     },
@@ -215,7 +215,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           '& .MuiOutlinedInput-root': {
-            backgroundColor: '#fff',
+            background: '#fff',
             '& fieldset': {
               borderColor: alpha(COLORS.text.secondary, 0.3),
             },
@@ -256,7 +256,7 @@ const theme = createTheme({
     MuiChip: {
       styleOverrides: {
         root: {
-          backgroundColor: alpha(COLORS.secondary.main, 0.1),
+          background: alpha(COLORS.secondary.main, 0.1),
           borderRadius: 2,
           color: COLORS.secondary.dark,
           fontSize: '0.7rem',
@@ -269,7 +269,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           '& .Mui-checked+.MuiSwitch-track': {
-            backgroundColor: COLORS.secondary.main,
+            background: COLORS.secondary.main,
           },
           '& .Mui-checked .MuiSwitch-thumb': {
             color: COLORS.secondary.main,
@@ -290,7 +290,7 @@ const theme = createTheme({
     MuiAvatar: {
       styleOverrides: {
         root: {
-          backgroundColor: alpha(COLORS.secondary.main, 0.15),
+          background: alpha(COLORS.secondary.main, 0.15),
           borderRadius: 0,
           color: COLORS.secondary.main,
           fontFamily: `${cormorant_garamond.style.fontFamily}, serif`,
@@ -394,7 +394,7 @@ const theme = createTheme({
           fontSize: '0.75rem',
 
           ...(ownerState.severity === 'info' && ({
-            backgroundColor: alpha(COLORS.secondary.main, 0.05),
+            background: alpha(COLORS.secondary.main, 0.05),
             border: `1px solid ${alpha(COLORS.secondary.main, 0.18)}`,
             color: COLORS.text.secondary,
             '& .MuiAlert-icon': {
@@ -410,10 +410,10 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           height: 6,
-          backgroundColor: alpha(COLORS.secondary.main, 0.15),
+          background: alpha(COLORS.secondary.main, 0.15),
         },
         bar: {
-          backgroundColor: COLORS.secondary.main,
+          background: COLORS.secondary.main,
         },
       },
     },

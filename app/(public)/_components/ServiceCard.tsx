@@ -57,7 +57,7 @@ export default function ServiceCard({
               position: 'absolute',
               top: 16,
               left: 16,
-              backgroundColor: COLORS.secondary.main,
+              background: COLORS.secondary.main,
               color: COLORS.primary.main,
             }}
           />
@@ -70,7 +70,7 @@ export default function ServiceCard({
             position: 'absolute',
             bottom: 16,
             right: 16,
-            backgroundColor: alpha(COLORS.primary.contrastText, 0.95),
+            background: alpha(COLORS.primary.contrastText, 0.95),
             color: COLORS.primary.main,
             fontFamily: `${cormorant_garamond.style.fontFamily}, serif`,
             fontSize: '1rem',
