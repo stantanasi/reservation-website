@@ -1,5 +1,5 @@
 import { COLORS } from '@/themes/colors';
-import { alpha, Button, Divider, Stack, Typography } from '@mui/material';
+import { alpha, Button, Divider, Grid, Stack, Typography } from '@mui/material';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Section from './_components/Section';
@@ -71,6 +71,42 @@ export default function HomePage() {
             Scroll
           </Typography>
         </Stack>
+      </Section>
+
+      <Section maxWidth="xl" mode="dark" sx={{ paddingY: 4 }}>
+        <Grid container spacing="1px" sx={{ width: '100%', background: alpha(COLORS.primary.contrastText, 0.1) }}>
+          {[
+            { value: '15+', label: "Années d'expertise" },
+            { value: '2 400+', label: 'Clientes fidèles' },
+            { value: '98%', label: 'Satisfaction' },
+            { value: '8', label: 'Experts dédiés' },
+          ].map(({ value, label }) => (
+            <Grid
+              key={label}
+              size={{ xs: 6, md: 3 }}
+              sx={{
+                background: COLORS.primary.main,
+                paddingY: 2,
+                textAlign: 'center'
+              }}
+            >
+              <Typography variant="h3" sx={{ color: COLORS.secondary.main, marginBottom: 0.5 }}>
+                {value}
+              </Typography>
+
+              <Typography
+                sx={{
+                  color: alpha(COLORS.primary.contrastText, 0.4),
+                  fontSize: '0.65rem',
+                  letterSpacing: '0.12em',
+                  textTransform: 'uppercase',
+                }}
+              >
+                {label}
+              </Typography>
+            </Grid>
+          ))}
+        </Grid>
       </Section>
     </main>
   );
