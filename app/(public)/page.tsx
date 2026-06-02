@@ -1,5 +1,6 @@
 import ServiceCard from '@/app/(public)/_components/ServiceCard';
 import { SERVICES } from '@/data/services.data';
+import { STAFF } from '@/data/staff.data';
 import { COLORS } from '@/themes/colors';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
@@ -10,6 +11,7 @@ import { alpha, Box, Button, Divider, Grid, Stack, Typography } from '@mui/mater
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Section from './_components/Section';
+import StaffCard from './_components/StaffCard';
 
 export const metadata: Metadata = {
   title: 'Séréna Studio — Institut Beauté & Bien-Être Paris',
@@ -19,6 +21,7 @@ export const metadata: Metadata = {
 export default function HomePage() {
   const services = SERVICES
     .filter((service) => service.featured);
+  const staff = STAFF;
 
   return (
     <main>
@@ -256,6 +259,35 @@ export default function HomePage() {
             </Link>
           </Grid>
         </Grid>
+      </Section>
+
+      <Section
+        overline="Notre Équipe"
+        title="Des Experts Passionnés"
+        subtitle="Chaque praticien est sélectionné pour son expertise, sa sensibilité et son engagement envers votre bien-être."
+        maxWidth="xl"
+      >
+        <Grid container spacing={3} sx={{ width: '100%', marginBottom: 6 }}>
+          {staff.slice(0, 3).map((member) => (
+            <Grid
+              key={member.id}
+              size={{ xs: 12, sm: 6, md: 4 }}
+            >
+              <StaffCard
+                staff={member}
+              />
+            </Grid>
+          ))}
+        </Grid>
+
+        <Link href="/equipe">
+          <Button
+            variant="outlined"
+            endIcon={<ArrowForwardIcon />}
+          >
+            Rencontrer toute l'équipe
+          </Button>
+        </Link>
       </Section>
     </main>
   );
