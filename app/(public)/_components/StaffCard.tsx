@@ -1,14 +1,61 @@
 import { COLORS } from '@/themes/colors';
+import { CATEGORY_LABELS } from '@/types/service.type';
 import { Staff } from '@/types/staff.type';
-import { alpha, Box, Card, CardContent, Typography } from '@mui/material';
+import { alpha, Avatar, Box, Card, CardContent, Chip, Stack, Typography } from '@mui/material';
 
 type Props = {
   staff: Staff;
+  variant: 'minimal' | 'compact';
 };
 
 export default function StaffCard({
   staff,
+  variant = 'minimal',
 }: Props) {
+  if (variant === 'compact') {
+    return (
+      <Card
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          flexDirection: 'row',
+          gap: 2,
+          padding: 2,
+          transition: 'all 0.3s ease',
+          '&:hover': {
+            borderColor: COLORS.secondary.main,
+          },
+        }}
+      >
+        <Avatar
+          src={staff.image}
+          alt={`${staff.firstName} ${staff.lastName}`}
+          sx={{ width: 52, height: 52 }}
+        />
+
+        <Box sx={{ flex: 1 }}>
+          <Typography sx={{ fontSize: '0.9rem', fontWeight: 500 }}>
+            {staff.firstName} {staff.lastName}
+          </Typography>
+
+          <Typography variant="caption" sx={{ color: COLORS.secondary.main, fontSize: '0.62rem', marginBottom: 0.8 }}>
+            {staff.role}
+          </Typography>
+
+          <Stack direction="row" spacing={1} sx={{ flexWrap: 'wrap' }}>
+            {staff.specialties.slice(0, 2).map((spec) => (
+              <Chip
+                key={spec}
+                label={CATEGORY_LABELS[spec]}
+                size="small"
+              />
+            ))}
+          </Stack>
+        </Box>
+      </Card>
+    );
+  }
+
   return (
     <Card
       sx={{
