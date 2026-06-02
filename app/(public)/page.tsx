@@ -1,6 +1,8 @@
 import ServiceCard from '@/app/(public)/_components/ServiceCard';
+import { REVIEWS } from '@/data/reviews.data';
 import { SERVICES } from '@/data/services.data';
 import { STAFF } from '@/data/staff.data';
+import { USERS } from '@/data/users.data';
 import { COLORS } from '@/themes/colors';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
@@ -10,6 +12,7 @@ import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 import { alpha, Box, Button, Divider, Grid, Stack, Typography } from '@mui/material';
 import { Metadata } from 'next';
 import Link from 'next/link';
+import ReviewCard from './_components/ReviewCard';
 import Section from './_components/Section';
 import StaffCard from './_components/StaffCard';
 
@@ -22,6 +25,13 @@ export default function HomePage() {
   const services = SERVICES
     .filter((service) => service.featured);
   const staff = STAFF;
+  const reviews = REVIEWS
+    .filter((review) => review.featured)
+    .map((review) => ({
+      ...review,
+      service: SERVICES.find((service) => service.id === review.service)!,
+      user: USERS.find((user) => user.id === review.user)!,
+    }));
 
   return (
     <main>
@@ -288,6 +298,28 @@ export default function HomePage() {
             Rencontrer toute l'équipe
           </Button>
         </Link>
+      </Section>
+
+      <Section
+        overline="Témoignages"
+        title="Ce qu'elles disent"
+        subtitle="La confiance de nos clientes est notre plus belle récompense."
+        maxWidth="xl"
+        mode="dark"
+      >
+        <Grid container spacing={3}>
+          {reviews.slice(0, 4).map((review) => (
+            <Grid
+              key={review.id}
+              size={{ xs: 12, sm: 6, md: 3 }}
+            >
+              <ReviewCard
+                review={review}
+                mode="dark"
+              />
+            </Grid>
+          ))}
+        </Grid>
       </Section>
     </main>
   );
