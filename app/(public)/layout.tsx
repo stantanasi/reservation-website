@@ -1,3 +1,4 @@
+import Navbar from '@/app/(public)/_components/Navbar';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -15,6 +16,7 @@ export default function PublicLayout({
 }>) {
   return (
     <>
+      <Navbar />
       {children}
     </>
   );
