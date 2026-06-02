@@ -321,6 +321,50 @@ export default function HomePage() {
           ))}
         </Grid>
       </Section>
+
+      <Section
+        overline="Votre Moment"
+        title="Offrez-vous un instant de grâce"
+        subtitle={<>
+          Réservez votre soin en ligne en quelques clics.<br />
+          Disponibilités en temps réel, confirmation immédiate.
+        </>}
+        maxWidth="md"
+        sx={{ overflow: 'hidden' }}
+      >
+        <Box
+          sx={{
+            width: { xs: 300, md: 500 },
+            height: { xs: 300, md: 500 },
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            border: `1px solid ${alpha(COLORS.secondary.main, 0.12)}`,
+            borderRadius: '50%',
+            pointerEvents: 'none',
+            transform: 'translate(-50%, -50%)',
+          }}
+        />
+        <Box
+          sx={{
+            width: { xs: 200, md: 350 },
+            height: { xs: 200, md: 350 },
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            border: `1px solid ${alpha(COLORS.secondary.main, 0.08)}`,
+            borderRadius: '50%',
+            pointerEvents: 'none',
+            transform: 'translate(-50%, -50%)',
+          }}
+        />
+
+        <Link href="/booking">
+          <Button variant="contained" size="large">
+            Réserver Maintenant
+          </Button>
+        </Link>
+      </Section>
     </main>
   );
 }
