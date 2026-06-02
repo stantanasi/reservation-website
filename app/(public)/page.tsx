@@ -1,4 +1,7 @@
+import ServiceCard from '@/app/(public)/_components/ServiceCard';
+import { SERVICES } from '@/data/services.data';
 import { COLORS } from '@/themes/colors';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { alpha, Button, Divider, Grid, Stack, Typography } from '@mui/material';
 import { Metadata } from 'next';
 import Link from 'next/link';
@@ -10,6 +13,9 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
+  const services = SERVICES
+    .filter((service) => service.featured);
+
   return (
     <main>
       <Section
@@ -107,6 +113,35 @@ export default function HomePage() {
             </Grid>
           ))}
         </Grid>
+      </Section>
+
+      <Section
+        overline="Nos Signatures"
+        title="Soins d'Exception"
+        subtitle="Chaque soin est une œuvre pensée pour vous — protocoles d'expert, produits rares, mains expertes."
+        maxWidth="xl"
+      >
+        <Grid container spacing={3} sx={{ width: '100%', marginBottom: 6 }}>
+          {services.map((service) => (
+            <Grid
+              key={service.id}
+              size={{ xs: 12, sm: 6, lg: 4 }}
+            >
+              <ServiceCard
+                service={service}
+              />
+            </Grid>
+          ))}
+        </Grid>
+
+        <Link href="/services">
+          <Button
+            variant="outlined"
+            endIcon={<ArrowForwardIcon />}
+          >
+            Voir toutes les prestations
+          </Button>
+        </Link>
       </Section>
     </main>
   );
