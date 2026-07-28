@@ -1,23 +1,30 @@
 import { COLORS } from '@/themes/colors';
 import { CATEGORY_LABELS } from '@/types/service.type';
 import { Staff } from '@/types/staff.type';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { alpha, Avatar, Box, Card, CardContent, Chip, Stack, Typography } from '@mui/material';
 
 type Props = {
   staff: Staff;
   variant: 'minimal' | 'overlay' | 'compact';
+  selected?: boolean;
+  onClick?: () => void;
 };
 
 export default function StaffCard({
   staff,
   variant = 'minimal',
+  selected,
+  onClick,
 }: Props) {
   if (variant === 'compact') {
     return (
       <Card
+        onClick={onClick}
         sx={{
           display: 'flex',
           alignItems: 'center',
+          cursor: onClick ? 'pointer' : 'auto',
           flexDirection: 'row',
           gap: 2,
           padding: 2,
@@ -27,11 +34,27 @@ export default function StaffCard({
           },
         }}
       >
-        <Avatar
-          src={staff.image}
-          alt={`${staff.firstName} ${staff.lastName}`}
-          sx={{ width: 52, height: 52 }}
-        />
+        <Box sx={{ position: 'relative' }}>
+          <Avatar
+            src={staff.image}
+            alt={`${staff.firstName} ${staff.lastName}`}
+            sx={{ width: 52, height: 52 }}
+          />
+
+          {selected && (
+            <CheckCircleIcon
+              sx={{
+                position: 'absolute',
+                top: -6,
+                right: -6,
+                color: COLORS.secondary.main,
+                background: '#fff',
+                borderRadius: '50%',
+                fontSize: 18,
+              }}
+            />
+          )}
+        </Box>
 
         <Box sx={{ flex: 1 }}>
           <Typography sx={{ fontSize: '0.9rem', fontWeight: 500 }}>
