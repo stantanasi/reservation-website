@@ -285,6 +285,7 @@ export default function HomePage() {
             >
               <StaffCard
                 staff={member}
+                variant="minimal"
               />
             </Grid>
           ))}
