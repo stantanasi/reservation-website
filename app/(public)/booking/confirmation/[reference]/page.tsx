@@ -15,6 +15,10 @@ type Props = {
   }>;
 };
 
+export async function generateStaticParams() {
+  return APPOINTMENTS.map((appointment) => ({ reference: appointment.reference }));
+}
+
 export const metadata: Metadata = {
   title: 'Réservation Confirmée',
   description: 'Votre rendez-vous chez Séréna Studio est confirmé. Retrouvez tous les détails dans cet email de confirmation.',
