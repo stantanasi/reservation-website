@@ -1,7 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  output: 'export',
+  basePath: '/reservation-website', 
+  assetPrefix: '/reservation-website',
+  images: {
+    unoptimized: true,
+  },
 };
 
 export default nextConfig;
